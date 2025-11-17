@@ -14,7 +14,7 @@ export const formatNumber = (number) => {
 export const formatDate = (dateString) => {
   if (!dateString) return '-';
   const date = new Date(dateString);
-  return new Intl.DateFormat('id-ID', {
+  return new Intl.DateTimeFormat('id-ID', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
