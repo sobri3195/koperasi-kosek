@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { DataProvider } from './context/DataContext';
+import ErrorBoundary from './components/common/ErrorBoundary';
 import LoginPage from './pages/LoginPage';
 import DashboardHome from './pages/DashboardHome';
 import CooperativesList from './pages/CooperativesList';
@@ -109,13 +110,15 @@ const AppRoutes = () => {
 
 function App() {
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <DataProvider>
-          <AppRoutes />
-        </DataProvider>
-      </AuthProvider>
-    </BrowserRouter>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <AuthProvider>
+          <DataProvider>
+            <AppRoutes />
+          </DataProvider>
+        </AuthProvider>
+      </BrowserRouter>
+    </ErrorBoundary>
   );
 }
 

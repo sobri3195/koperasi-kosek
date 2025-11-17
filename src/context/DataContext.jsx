@@ -12,9 +12,9 @@ export const useData = () => {
 };
 
 export const DataProvider = ({ children }) => {
-  const [cooperatives, setCooperatives] = useState(INITIAL_COOPERATIVES);
-  const [audits, setAudits] = useState(INITIAL_AUDITS);
-  const [tasks, setTasks] = useState(INITIAL_TASKS);
+  const [cooperatives, setCooperatives] = useState(INITIAL_COOPERATIVES || []);
+  const [audits, setAudits] = useState(INITIAL_AUDITS || []);
+  const [tasks, setTasks] = useState(INITIAL_TASKS || []);
 
   const getCooperativeById = (id) => {
     return cooperatives.find((coop) => coop.id === parseInt(id));

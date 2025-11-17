@@ -17,6 +17,16 @@ const CooperativesList = () => {
   const [filterRisk, setFilterRisk] = useState('All');
   const [filterRegion, setFilterRegion] = useState('All');
 
+  if (!cooperatives || !Array.isArray(cooperatives)) {
+    return (
+      <Layout title="Master Koperasi">
+        <div className="text-center py-12">
+          <p className="text-gray-500">Memuat data...</p>
+        </div>
+      </Layout>
+    );
+  }
+
   const regions = [...new Set(cooperatives.map((c) => c.region))];
 
   const filteredCooperatives = cooperatives.filter((coop) => {
