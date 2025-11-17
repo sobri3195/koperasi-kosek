@@ -5,6 +5,10 @@ const Sidebar = () => {
   const location = useLocation();
   const { currentUser, hasPermission } = useAuth();
 
+  if (!currentUser) {
+    return null;
+  }
+
   const navigation = [
     {
       name: 'Dashboard',

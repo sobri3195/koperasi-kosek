@@ -4,12 +4,16 @@ import { Button } from '../common/Button';
 
 const Topbar = ({ title }) => {
   const navigate = useNavigate();
-  const { logout } = useAuth();
+  const { currentUser, logout } = useAuth();
 
   const handleLogout = () => {
     logout();
     navigate('/');
   };
+
+  if (!currentUser) {
+    return null;
+  }
 
   return (
     <div className="bg-white shadow-sm border-b border-gray-200">

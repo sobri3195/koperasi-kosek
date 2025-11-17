@@ -26,6 +26,26 @@ const DashboardHome = () => {
   const { currentUser, hasPermission } = useAuth();
   const { cooperatives } = useData();
 
+  if (!currentUser) {
+    return (
+      <Layout title="Dashboard">
+        <div className="text-center py-12">
+          <p className="text-gray-500">Loading...</p>
+        </div>
+      </Layout>
+    );
+  }
+
+  if (!cooperatives || !Array.isArray(cooperatives)) {
+    return (
+      <Layout title="Dashboard">
+        <div className="text-center py-12">
+          <p className="text-gray-500">Memuat data...</p>
+        </div>
+      </Layout>
+    );
+  }
+
   const isManager = currentUser?.role === 'manager';
   const managerCoop = isManager
     ? cooperatives.find((c) => c.id === currentUser.cooperativeId)

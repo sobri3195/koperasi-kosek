@@ -27,6 +27,8 @@ const LoginPage = () => {
     const result = quickLogin(role);
     if (result.success) {
       navigate('/dashboard');
+    } else {
+      setError(result.error || 'Login gagal');
     }
   };
 
