@@ -9,6 +9,32 @@ export const DEMO_USERS = [
   },
   {
     id: 2,
+    email: 'staf.kosek@demo',
+    password: 'demo123',
+    name: 'Staf Kosek III',
+    role: 'kosek_staff',
+    roleLabel: 'Staf Kosek III',
+  },
+  {
+    id: 3,
+    email: 'asisten@demo',
+    password: 'demo123',
+    name: 'Asisten Kepala Satrad',
+    role: 'assistant',
+    roleLabel: 'Asisten Kepala Satrad',
+    satradUnit: 'Satrad Jakarta',
+  },
+  {
+    id: 4,
+    email: 'kepala.satrad@demo',
+    password: 'demo123',
+    name: 'Kepala Satrad',
+    role: 'satrad_head',
+    roleLabel: 'Kepala Satrad',
+    satradUnit: 'Satrad Jakarta',
+  },
+  {
+    id: 5,
     email: 'auditor@demo',
     password: 'demo123',
     name: 'Auditor Pengawas',
@@ -16,7 +42,7 @@ export const DEMO_USERS = [
     roleLabel: 'Auditor / Pengawas',
   },
   {
-    id: 3,
+    id: 6,
     email: 'analis@demo',
     password: 'demo123',
     name: 'Analis Keuangan',
@@ -24,7 +50,7 @@ export const DEMO_USERS = [
     roleLabel: 'Analis Keuangan',
   },
   {
-    id: 4,
+    id: 7,
     email: 'koperasi1@demo',
     password: 'demo123',
     name: 'Pengelola Koperasi Maju',
@@ -33,13 +59,13 @@ export const DEMO_USERS = [
     cooperativeId: 1,
   },
   {
-    id: 5,
-    email: 'koperasi2@demo',
+    id: 8,
+    email: 'koperasi4@demo',
     password: 'demo123',
-    name: 'Pengelola Sejahtera',
+    name: 'Pengelola Koperasi Harmoni',
     role: 'manager',
     roleLabel: 'Pengelola Koperasi',
-    cooperativeId: 2,
+    cooperativeId: 4,
   },
 ];
 
@@ -572,4 +598,213 @@ export const HEALTH_SCORE_HISTORY = [
   { quarter: 'Q2 2023', avgScore: 70 },
   { quarter: 'Q3 2023', avgScore: 69 },
   { quarter: 'Q4 2023', avgScore: 71 },
+];
+
+export const INITIAL_MONTHLY_REPORTS = [
+  {
+    id: 1,
+    cooperativeId: 1,
+    cooperativeName: 'Koperasi Maju Bersama',
+    month: '2024-01',
+    monthLabel: 'Januari 2024',
+    submittedBy: 'Staf Kosek III',
+    submittedById: 2,
+    submittedDate: '2024-02-05',
+    status: 'Complete',
+    assistantReport: {
+      submittedBy: 'Asisten Kepala Satrad',
+      submittedDate: '2024-02-03',
+      totalMembers: 450,
+      newMembers: 8,
+      resignedMembers: 2,
+      totalSavings: 2800000000,
+      totalLoans: 3500000000,
+      loanDisbursement: 350000000,
+      loanRepayment: 320000000,
+      npl: 2.5,
+      operationalIncome: 125000000,
+      operationalExpense: 85000000,
+      notes: 'Kinerja bulan ini sangat baik. Penyaluran kredit meningkat 15% dibanding bulan lalu.'
+    },
+    satradHeadReport: {
+      submittedBy: 'Kepala Satrad',
+      submittedDate: '2024-02-04',
+      monitoringVisits: 3,
+      issuesFound: 1,
+      issuesResolved: 1,
+      complianceScore: 95,
+      recommendations: 'Pertahankan sistem administrasi yang sudah baik. Tingkatkan edukasi anggota tentang produk simpanan.',
+      nextActions: 'Follow up program literasi keuangan untuk anggota baru.'
+    },
+    kosekAnalysis: {
+      analyzedBy: 'Staf Kosek III',
+      analyzedDate: '2024-02-05',
+      overallAssessment: 'Sangat Baik',
+      strengthPoints: [
+        'NPL rendah di 2.5%',
+        'Pertumbuhan anggota positif',
+        'Likuiditas sehat',
+        'Administrasi tertib'
+      ],
+      concernPoints: [
+        'Perlu diversifikasi produk simpanan'
+      ],
+      recommendations: 'Koperasi dalam kondisi sangat baik. Rekomendasi untuk mengembangkan produk simpanan berjangka dengan bunga kompetitif.',
+      followUpRequired: false
+    }
+  },
+  {
+    id: 2,
+    cooperativeId: 4,
+    cooperativeName: 'Koperasi Harmoni',
+    month: '2024-01',
+    monthLabel: 'Januari 2024',
+    submittedBy: 'Staf Kosek III',
+    submittedById: 2,
+    submittedDate: '2024-02-06',
+    status: 'Complete',
+    assistantReport: {
+      submittedBy: 'Asisten Kepala Satrad',
+      submittedDate: '2024-02-03',
+      totalMembers: 380,
+      newMembers: 6,
+      resignedMembers: 3,
+      totalSavings: 2300000000,
+      totalLoans: 2800000000,
+      loanDisbursement: 280000000,
+      loanRepayment: 260000000,
+      npl: 3.2,
+      operationalIncome: 98000000,
+      operationalExpense: 72000000,
+      notes: 'Pertumbuhan stabil. Ada sedikit peningkatan NPL yang perlu dimonitor.'
+    },
+    satradHeadReport: {
+      submittedBy: 'Kepala Satrad',
+      submittedDate: '2024-02-05',
+      monitoringVisits: 2,
+      issuesFound: 2,
+      issuesResolved: 1,
+      complianceScore: 88,
+      recommendations: 'Perbaiki sistem monitoring kredit untuk mencegah peningkatan NPL lebih lanjut.',
+      nextActions: 'Audit internal untuk review prosedur pemberian kredit.'
+    },
+    kosekAnalysis: {
+      analyzedBy: 'Staf Kosek III',
+      analyzedDate: '2024-02-06',
+      overallAssessment: 'Baik',
+      strengthPoints: [
+        'Pertumbuhan anggota konsisten',
+        'Pendapatan operasional positif',
+        'Likuiditas memadai'
+      ],
+      concernPoints: [
+        'NPL meningkat dari 3.0% ke 3.2%',
+        'Perlu perbaikan sistem penagihan'
+      ],
+      recommendations: 'Monitor NPL secara ketat. Implementasi sistem reminder pembayaran cicilan untuk anggota.',
+      followUpRequired: true
+    }
+  },
+  {
+    id: 3,
+    cooperativeId: 1,
+    cooperativeName: 'Koperasi Maju Bersama',
+    month: '2024-02',
+    monthLabel: 'Februari 2024',
+    submittedBy: 'Staf Kosek III',
+    submittedById: 2,
+    submittedDate: '2024-03-07',
+    status: 'Complete',
+    assistantReport: {
+      submittedBy: 'Asisten Kepala Satrad',
+      submittedDate: '2024-03-04',
+      totalMembers: 455,
+      newMembers: 7,
+      resignedMembers: 2,
+      totalSavings: 2950000000,
+      totalLoans: 3650000000,
+      loanDisbursement: 400000000,
+      loanRepayment: 350000000,
+      npl: 2.3,
+      operationalIncome: 132000000,
+      operationalExpense: 88000000,
+      notes: 'Tren positif berlanjut. NPL turun menjadi 2.3%.'
+    },
+    satradHeadReport: {
+      submittedBy: 'Kepala Satrad',
+      submittedDate: '2024-03-05',
+      monitoringVisits: 2,
+      issuesFound: 0,
+      issuesResolved: 1,
+      complianceScore: 96,
+      recommendations: 'Koperasi menunjukkan performa excellent. Jadikan best practice untuk koperasi lain.',
+      nextActions: 'Persiapkan study visit untuk pengurus koperasi lain.'
+    },
+    kosekAnalysis: {
+      analyzedBy: 'Staf Kosek III',
+      analyzedDate: '2024-03-07',
+      overallAssessment: 'Sangat Baik',
+      strengthPoints: [
+        'NPL menurun ke 2.3%',
+        'Pertumbuhan simpanan 5.4%',
+        'Penyaluran kredit meningkat',
+        'Net income positif Rp 44 juta'
+      ],
+      concernPoints: [],
+      recommendations: 'Koperasi menjadi model terbaik. Pertahankan kinerja dan bagikan best practice ke koperasi lain di wilayah.',
+      followUpRequired: false
+    }
+  },
+  {
+    id: 4,
+    cooperativeId: 4,
+    cooperativeName: 'Koperasi Harmoni',
+    month: '2024-02',
+    monthLabel: 'Februari 2024',
+    submittedBy: 'Staf Kosek III',
+    submittedById: 2,
+    submittedDate: '2024-03-08',
+    status: 'Pending Review',
+    assistantReport: {
+      submittedBy: 'Asisten Kepala Satrad',
+      submittedDate: '2024-03-05',
+      totalMembers: 383,
+      newMembers: 5,
+      resignedMembers: 2,
+      totalSavings: 2350000000,
+      totalLoans: 2850000000,
+      loanDisbursement: 250000000,
+      loanRepayment: 245000000,
+      npl: 3.5,
+      operationalIncome: 95000000,
+      operationalExpense: 74000000,
+      notes: 'NPL meningkat lagi menjadi 3.5%. Perlu perhatian khusus.'
+    },
+    satradHeadReport: {
+      submittedBy: 'Kepala Satrad',
+      submittedDate: '2024-03-06',
+      monitoringVisits: 3,
+      issuesFound: 3,
+      issuesResolved: 1,
+      complianceScore: 85,
+      recommendations: 'Segera terapkan sistem monitoring kredit yang lebih ketat. Review prosedur analisis kredit.',
+      nextActions: 'Pertemuan dengan pengurus untuk membahas strategi penanganan NPL.'
+    },
+    kosekAnalysis: {
+      analyzedBy: 'Staf Kosek III',
+      analyzedDate: '2024-03-08',
+      overallAssessment: 'Cukup',
+      strengthPoints: [
+        'Pertumbuhan anggota masih positif',
+        'Pendapatan operasional stabil'
+      ],
+      concernPoints: [
+        'NPL terus meningkat (3.0% -> 3.2% -> 3.5%)',
+        'Trend negatif pada kualitas kredit',
+        'Compliance score menurun'
+      ],
+      recommendations: 'URGENT: Implementasi action plan penanganan NPL. Perbaiki prosedur kredit dan penagihan. Monitoring mingguan hingga NPL turun di bawah 3%.',
+      followUpRequired: true
+    }
+  }
 ];

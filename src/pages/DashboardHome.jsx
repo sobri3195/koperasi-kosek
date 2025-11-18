@@ -55,15 +55,16 @@ const DashboardHome = () => {
     return <ManagerDashboard cooperative={managerCoop} />;
   }
 
-  const activeCoops = cooperatives.filter((c) => c.status === 'Active');
-  const totalMembers = cooperatives.reduce((sum, c) => sum + c.totalMembers, 0);
-  const totalAssets = cooperatives.reduce((sum, c) => sum + c.totalAssets, 0);
-  const totalLoans = cooperatives.reduce((sum, c) => sum + c.totalLoanPortfolio, 0);
+  const simpanPinjamCoops = cooperatives.filter((c) => c.type === 'Simpan Pinjam');
+  const activeCoops = simpanPinjamCoops.filter((c) => c.status === 'Active');
+  const totalMembers = simpanPinjamCoops.reduce((sum, c) => sum + c.totalMembers, 0);
+  const totalAssets = simpanPinjamCoops.reduce((sum, c) => sum + c.totalAssets, 0);
+  const totalLoans = simpanPinjamCoops.reduce((sum, c) => sum + c.totalLoanPortfolio, 0);
 
   const riskDistribution = {
-    Low: cooperatives.filter((c) => c.riskLevel === 'Low').length,
-    Medium: cooperatives.filter((c) => c.riskLevel === 'Medium').length,
-    High: cooperatives.filter((c) => c.riskLevel === 'High').length,
+    Low: simpanPinjamCoops.filter((c) => c.riskLevel === 'Low').length,
+    Medium: simpanPinjamCoops.filter((c) => c.riskLevel === 'Medium').length,
+    High: simpanPinjamCoops.filter((c) => c.riskLevel === 'High').length,
   };
 
   const riskChartData = [
@@ -72,23 +73,28 @@ const DashboardHome = () => {
     { name: 'High Risk', value: riskDistribution.High, color: '#ef4444' },
   ];
 
-  const healthScoreData = cooperatives.map((c) => ({
+  const healthScoreData = simpanPinjamCoops.map((c) => ({
     name: c.code,
     score: c.healthScore,
   }));
 
-  const topCooperatives = [...cooperatives]
+  const topCooperatives = [...simpanPinjamCoops]
     .sort((a, b) => b.healthScore - a.healthScore)
     .slice(0, 5);
 
   return (
-    <Layout title="Dashboard Overview">
+    <Layout title="Dashboard - Koperasi Simpan Pinjam">
       <div className="space-y-6">
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+          <p className="text-blue-800 font-medium">
+            📊 Dashboard khusus untuk Koperasi Simpan Pinjam
+          </p>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <MetricCard
-            title="Total Koperasi"
-            value={cooperatives.length}
-            subtitle={`${activeCoops.length} aktif, ${cooperatives.length - activeCoops.length} tidak aktif`}
+            title="Koperasi Simpan Pinjam"
+            value={simpanPinjamCoops.length}
+            subtitle={`${activeCoops.length} aktif, ${simpanPinjamCoops.length - activeCoops.length} tidak aktif`}
             icon={<span className="text-2xl">🏢</span>}
           />
           <MetricCard

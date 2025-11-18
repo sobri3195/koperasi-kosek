@@ -11,6 +11,9 @@ import AnalysisPage from './pages/AnalysisPage';
 import AuditsPage from './pages/AuditsPage';
 import ReportsPage from './pages/ReportsPage';
 import SettingsPage from './pages/SettingsPage';
+import MonthlyReportsPage from './pages/MonthlyReportsPage';
+import MonthlyReportDetail from './pages/MonthlyReportDetail';
+import MonthlyReportForm from './pages/MonthlyReportForm';
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
@@ -92,6 +95,38 @@ const AppRoutes = () => {
         element={
           <ProtectedRoute>
             <ReportsPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/monthly-reports"
+        element={
+          <ProtectedRoute>
+            <MonthlyReportsPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/monthly-reports/new"
+        element={
+          <ProtectedRoute>
+            <MonthlyReportForm />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/monthly-reports/:id"
+        element={
+          <ProtectedRoute>
+            <MonthlyReportDetail />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/monthly-reports/:id/edit"
+        element={
+          <ProtectedRoute>
+            <MonthlyReportForm />
           </ProtectedRoute>
         }
       />

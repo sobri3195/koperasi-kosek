@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { INITIAL_COOPERATIVES, INITIAL_AUDITS, INITIAL_TASKS } from '../data/mockData';
+import { INITIAL_COOPERATIVES, INITIAL_AUDITS, INITIAL_TASKS, INITIAL_MONTHLY_REPORTS } from '../data/mockData';
 
 const DataContext = createContext();
 
@@ -15,6 +15,7 @@ export const DataProvider = ({ children }) => {
   const [cooperatives, setCooperatives] = useState(INITIAL_COOPERATIVES || []);
   const [audits, setAudits] = useState(INITIAL_AUDITS || []);
   const [tasks, setTasks] = useState(INITIAL_TASKS || []);
+  const [monthlyReports, setMonthlyReports] = useState(INITIAL_MONTHLY_REPORTS || []);
 
   const getCooperativeById = (id) => {
     return cooperatives.find((coop) => coop.id === parseInt(id));
@@ -104,10 +105,40 @@ export const DataProvider = ({ children }) => {
     setTasks(tasks.filter((task) => task.id !== parseInt(id)));
   };
 
+  const getMonthlyReportsByCooperative = (cooperativeId) => {
+    return monthlyReports.filter((report) => report.cooperativeId === parseInt(cooperativeId));
+  };
+
+  const getMonthlyReportById = (id) => {
+    return monthlyReports.find((report) => report.id === parseInt(id));
+  };
+
+  const addMonthlyReport = (report) => {
+    const newReport = {
+      ...report,
+      id: Math.max(...monthlyReports.map((r) => r.id), 0) + 1,
+    };
+    setMonthlyReports([...monthlyReports, newReport]);
+    return newReport;
+  };
+
+  const updateMonthlyReport = (id, updates) => {
+    setMonthlyReports(
+      monthlyReports.map((report) =>
+        report.id === parseInt(id) ? { ...report, ...updates } : report
+      )
+    );
+  };
+
+  const deleteMonthlyReport = (id) => {
+    setMonthlyReports(monthlyReports.filter((report) => report.id !== parseInt(id)));
+  };
+
   const value = {
     cooperatives,
     audits,
     tasks,
+    monthlyReports,
     getCooperativeById,
     addCooperative,
     updateCooperative,
@@ -120,6 +151,11 @@ export const DataProvider = ({ children }) => {
     addTask,
     updateTask,
     deleteTask,
+    getMonthlyReportsByCooperative,
+    getMonthlyReportById,
+    addMonthlyReport,
+    updateMonthlyReport,
+    deleteMonthlyReport,
   };
 
   return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
