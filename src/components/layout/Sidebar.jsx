@@ -23,6 +23,12 @@ const Sidebar = () => {
       permission: 'view_all',
     },
     {
+      name: 'Laporan Bulanan',
+      path: '/monthly-reports',
+      icon: '📝',
+      permission: 'view_all',
+    },
+    {
       name: 'Analisis',
       path: '/analysis',
       icon: '📈',

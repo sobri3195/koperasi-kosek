@@ -51,7 +51,10 @@ export const AuthProvider = ({ children }) => {
     if (!currentUser) return false;
 
     const permissions = {
-      admin: ['view_all', 'edit_all', 'manage_users', 'add_audit', 'view_analytics'],
+      admin: ['view_all', 'edit_all', 'manage_users', 'add_audit', 'view_analytics', 'manage_monthly_reports'],
+      kosek_staff: ['view_all', 'view_analytics', 'manage_monthly_reports', 'add_monthly_report'],
+      assistant: ['view_all', 'submit_assistant_report'],
+      satrad_head: ['view_all', 'submit_satrad_report', 'view_analytics'],
       auditor: ['view_all', 'add_audit', 'view_analytics'],
       analyst: ['view_all', 'view_analytics'],
       manager: ['view_own', 'edit_own'],

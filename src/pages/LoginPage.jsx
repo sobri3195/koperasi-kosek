@@ -110,16 +110,23 @@ const LoginPage = () => {
                 <Button
                   variant="outline"
                   className="w-full"
-                  onClick={() => handleQuickLogin('auditor')}
+                  onClick={() => handleQuickLogin('kosek_staff')}
                 >
-                  🔍 Auditor
+                  📝 Staf Kosek III
                 </Button>
                 <Button
                   variant="outline"
                   className="w-full"
-                  onClick={() => handleQuickLogin('analyst')}
+                  onClick={() => handleQuickLogin('assistant')}
                 >
-                  📊 Analis Keuangan
+                  👔 Asisten Kepala Satrad
+                </Button>
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  onClick={() => handleQuickLogin('satrad_head')}
+                >
+                  👨‍💼 Kepala Satrad
                 </Button>
                 <Button
                   variant="outline"
